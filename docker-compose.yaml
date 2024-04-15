@@ -1,0 +1,11 @@
+version: '3.10'
+# Секция, где перечислены все сервисы, с которые относятся к системе
+services:
+  delivery_service:
+    build: .
+    ports:
+      - 8000:80
+ # Передаём переменные окружения, которые будут использованы приложением
+    environment:
+        - POSTGRES_URL=postgresql://postgres:postgres@localhost:5432/first
+        - AMQP_URL=amqp://guest:guest123@51.250.26.59:5672/
