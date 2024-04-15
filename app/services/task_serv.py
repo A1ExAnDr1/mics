@@ -40,3 +40,18 @@ class TaskServise():
     def get_users(self):
         return self.user_r.get_users()
    # def get_user_by_id(self):
+
+    def finish_task(self, id: UUID) -> Task:
+        task = self.task_r.get_task_by_id(id)
+        if task.status != TaskStatuses.ACTIVATED:
+            raise ValueError
+        task.status = TaskStatuses.DONE
+        return self.task_r.set_status(task)
+    def cancel_task (self, id:UUID) -> Task:
+        task = self.task_r.get_task_by_id(id)
+        if task.status == TaskStatuses.DONE:
+            raise ValueError
+        task.status = TaskStatuses.CANCELED
+        return self.task_r.set_status(task)
+
+
