@@ -19,7 +19,7 @@ COPY ./alembic.ini /code/alembic.ini
 
 EXPOSE 8000
 
-#CMD ["/bin/sh", "-c", \alembic upgrade head && \ uvicornvmain:app --host 0.0.0.0 --port 80"]
+CMD ["/bin/sh", "-c", \alembic upgrade head && \ uvicornvmain:app --host 0.0.0.0 --port 80"]
 
 
-#ENTRYPOINT ["/code/entrypoint.sh"]
+#ENTRYPOINT ["sh","entrypoint.sh"]
